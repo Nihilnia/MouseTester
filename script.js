@@ -1,10 +1,23 @@
 $('document').ready(() => {
 
-    document.addEventListener('contextmenu', event => event.preventDefault());
+    // document.addEventListener('contextmenu', event => event.preventDefault());
     console.log('R.');
 
     var daBody = $('html');
     var btnClear = $('#btnClear');
+
+    var toggleDn = $('#dn');
+
+    var isDisableRightClick = true;
+    document.body.addEventListener("contextmenu", function (evt) {
+        if (isDisableRightClick) evt.preventDefault();
+    });
+
+    document.getElementById('abc').addEventListener("click", function () {
+        isDisableRightClick = !isDisableRightClick;
+    });
+
+
 
 
     var leftSingle = $('#leftSingle');
@@ -46,7 +59,6 @@ $('document').ready(() => {
                 console.log("wheel dbl.");
                 doubleWheel++;
                 wheelDouble.html(`${doubleWheel}`);
-                $('#dblWheel').html(`Double Click: <span id="rightDouble">${doubleWheel}</span></p>`);
             };
         };
         if (x.which === 3) {
@@ -56,8 +68,8 @@ $('document').ready(() => {
             if (x.detail === 2) {
                 console.log("right dbl.");
                 doubleRight++;
-                // rightDouble.html(`${doubleRight}`);
-                dblRight.html(`Double Click: <span id="rightDouble">${doubleRight}</span></p>`);
+                rightDouble.html(`${doubleRight}`);
+
             };
 
         };
